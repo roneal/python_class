@@ -238,8 +238,8 @@ def main():
 # Standard Python boilerplate code. All it means is we run the function main() ONLY
 # if this file is being ran directly, but not if it has been imported by another file.
 # The reason we do this is because Python needs something not in a class or function
-# to start our program with, such as a call to a function, such as main(). However,
-# if we didn't have our if statement and just had a call to main(), any time someone
+# to start our program with, such as a call to a function like main(). However, in the
+# event we didn't have our if statement and just had a call to main(), any time someone
 # imported our file our code would automatically run, regardless of whether they wanted
 # it to or not. You can imagine how that could cause a clusterfuck of biblical proportions.
 if __name__ == '__main__':
