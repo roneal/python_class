@@ -197,7 +197,7 @@ def main():
     # iteration via the built-in function enumerate(), starting with 0.
 
     # Note that word 'test' in our for loop is different from the namedtuple
-    # that called Test. Python is case-sensitive, so be careful with naming.
+    # that we called Test. Python is case-sensitive, so be careful with naming.
     for i, test in enumerate(tests):
 
         # Here we check if test.Args is an iterable, which includes lists, tuples,
