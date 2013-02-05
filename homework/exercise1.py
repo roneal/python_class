@@ -224,9 +224,15 @@ def main():
         else:
             status = 'FAIL'
 
-        # and print it all out.
-        print "{0}: {1} {2} -- got: {3}, expected: {4}\n".format(i, test.Func.__name__,
-                                                                 status, res, repr(test.Answer))
+        # and print it all out. __name__ is a special attribute that "callables" such
+        # as functions and classes have that tells you the name of the callable. In this
+        # case, it returns our function names, eg question1, question2, etc.
+
+        # repr() is a built-in function that returns the representation of an object, which
+        # can be different from calling str() on that object. We use it here because we want
+        # our strings to show their quotation marks since some of our tests have spaces in them.
+        print "{0}: {1} {2} -- got: {3}, expected: {4}\n".format(i, test.Func.__name__, status,
+                                                                 repr(res), repr(test.Answer))
 
 
 # Standard Python boilerplate code. All it means is we run the function main() ONLY
