@@ -4,7 +4,7 @@
 # This introduces functions which are defined by the keyword 'def'
 # in the form of 'def functionname(args):' where args are the arguments
 # passed to the function. If we wanted to make a function named adder
-# that took in two numbers, it would have the function signature of
+# that took in two numbers named x and y, it would have the function signature of
 # 'def adder(x, y): ' The colon after the arguments is VERY important
 # as it lets Python know that it is the start of a block of code. A block
 # is indicated by indention. Every line that belongs to a function will be indented.
