@@ -94,8 +94,10 @@ def question4(x):
 # Given two strings, str_one and str_two, return the
 # first three characters of str_one concatenated with
 # (added to) the first three characters of str_two such
-# that question5('Brad', 'Trent') will produce 'BraTre'
+# that question5('Brad', 'Trent') will produce 'BraTre'3
+# Hint: You can index strings just like you index lists.
 # Extra credit: look up "slicing" and use that to solve
+# this problem and question three.
 def question5(str_one, str_two):
     # your code here
     return
