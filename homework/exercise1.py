@@ -113,15 +113,38 @@ def question5(str_one, str_two):
 
 
 
+###############################################
+####                                       ####
+####             !!! ALERT !!!             ####
+####                                       ####
+###############################################
+## The testing function lays below. Typically we would use something called
+## a unit testing library to test all our problems, but I opted to roll my own
+## tests so you could see some more Python in action if you felt like looking.
+## Later assignments may or may not use to a proper unit testing library
+## depending on how lazy I feel on that particular day.
 
 
 
 
+# We are importing the objects namedtuple and Iterable from the module collections.
+# This is code that is part of the Python Standard Library that someone else has written
+# for our benefit. I could have also imported these with a so-called regular import like:
+# 'import collections' and then any time I needed to refer to namedtuple I could type
+# collections.namedtuple, but I opted to just directly import the objects I needed.
 from collections import namedtuple, Iterable
 
 def main():
+    # Namedtuple allows us to create a simple data structure that contains
+    # the fields we specify so that they can be accessed by Namedtuple.field
+    # or through regular indexing operations like Namedtuple[0].
     Test = namedtuple('Test', ['Func', 'Args', 'Answer'])
 
+
+    # We then create a list of our namedtuple, named Test, that will
+    # contain the function we want to test, some arguments to test
+    # it with, and the expected output from that function. Note that you
+    # do not have to format things this way syntactically, it's merely stylistic.
     tests = [Test(Func=question1,
                   Args=5,
                   Answer='Number of Apples: 5'),
@@ -168,19 +191,55 @@ def main():
                   Args=('number one', 'in the hood, g'),
                   Answer='numin ')]
 
+    # Now iterate through our list of Tests, but count each iteration and
+    # return the current count along with the Test for that particular
+    # iteration via the built-in function enumerate(), starting with 0.
+
+    # Note that word 'test' in our for loop is different from the namedtuple
+    # that we called Test. Python is case-sensitive, so be careful with naming.
     for i, test in enumerate(tests):
+
+        # Here we check if test.Args is an iterable, which includes lists, tuples,
+        # dictionaries, and strings. We do not however, want our check to pass if
+        # test.Args is a regular string, as opposed to some other type of iterable.
         if isinstance(test.Args, Iterable) and not isinstance(test.Args, basestring):
+
+            # If our check passed then we call the function in the test,
+            # with the arguments provided. But we call it with the asterisk or *
+            # operator. The * does a lot of stuff in Python (and a lot of other
+            # languages!), but here it "unpacks" our arguments. Assuming a = [3, 2],
+            # the function call example(a) would actually be example([3,2]) which would
+            # be a problem if example expected two intss as arguments instead of a list.
+            # example(*a), however, would expand the list to produce example(3, 2)
             res = test.Func(*test.Args)
         else:
+            # call our function, but don't try to expand our arguments, as
+            # it would throw an exception (error) if it wasn't an iterable.
             res = test.Func(test.Args)
 
+        # now we just test to see if the results of our test match our expectations.
         if res == test.Answer:
             status = 'PASS'
         else:
             status = 'FAIL'
 
-        print "{0}: {1} {2} -- got: {3}, expected: {4}\n".format(i, test.Func.__name__,
-                                                                 status, res, repr(test.Answer))
+        # and print it all out. __name__ is a special attribute that "callables" such
+        # as functions and classes have that tells you the name of the callable. In this
+        # case, it returns our function names, eg question1, question2, etc.
 
+        # repr() is a built-in function that returns the representation of an object, which
+        # can be different from calling str() on that object. We use it here because we want
+        # our strings to show their quotation marks since some of our tests have spaces in them.
+        print "{0}: {1} {2} -- got: {3}, expected: {4}\n".format(i, test.Func.__name__, status,
+                                                                 repr(res), repr(test.Answer))
+
+
+# Standard Python boilerplate code. All it means is we run the function main() ONLY
+# if this file is being ran directly, but not if it has been imported by another file.
+# The reason we do this is because Python needs something not in a class or function
+# to start our program with, such as a call to a function like main(). However, in the
+# event we didn't have our if statement and just had a call to main(), any time someone
+# imported our file our code would automatically run, regardless of whether they wanted
+# it to or not. You can imagine how that could cause a clusterfuck of biblical proportions.
 if __name__ == '__main__':
     main()
