@@ -86,8 +86,8 @@ def question3(list_one, list_two):
 # a list consisting of x^2, x^3, x^4, x^5. That means
 # a call of question4(3) should return [9, 27, 81, 243]
 def question4(x):
-    # your code here
-    return
+    arb_list = [x ** 2, x ** 3, x ** 4, x **5]
+    return arb_list
 
 
 
