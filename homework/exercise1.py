@@ -70,8 +70,12 @@ def question2(person_name):
 # last element of list two. remember that you
 # use [] to index things. Eg, my_var[num].
 def question3(list_one, list_two):
-    # your code here
-    return
+    list_three = []
+    list_three.append(list_one[0])
+    list_three.append(list_one[1])
+    list_three.append(list_one[2])
+    list_three.append(list_two[-1])
+    return list_three
 
 
 
