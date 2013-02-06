@@ -42,9 +42,8 @@
 # The string formatting has to be exact, including spaces.
 # So, question1(5) would return 'Number of Apples: 5'
 def question1(count):
-    # your code here
-    return
-
+    
+    return "Number of Apples: {count}".format(count=count)
 
 
 
@@ -57,8 +56,8 @@ def question1(count):
 # That means question2('John') would yield a value of
 # "Hello John, your name is 4 characters long"
 def question2(person_name):
-    # your code here
-    return
+    name_len = len(person_name)
+    return "Hello {person_name}, your name is {name_len} characters long".format(person_name=person_name, name_len=name_len)
 
 
 
